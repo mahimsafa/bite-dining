@@ -1,73 +1,54 @@
-# React + TypeScript + Vite
+# Bite Dining
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Restaurant website — React 19, TypeScript, Vite, Tailwind CSS v4.
 
-Currently, two official plugins are available:
+## Tech stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- React 19, TypeScript (strict)
+- Vite 7, Tailwind CSS v4
+- Vitest, React Testing Library, Storybook
+- pnpm
 
-## React Compiler
+## Prerequisites
 
-The React Compiler is currently not compatible with SWC. See [this issue](https://github.com/vitejs/vite-plugin-react/issues/428) for tracking the progress.
+- [Node.js](https://nodejs.org/) (LTS)
+- [pnpm](https://pnpm.io/): `npm install -g pnpm`
 
-## Expanding the ESLint configuration
+## Getting started
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+git clone https://github.com/mahimsafa/bite-dining.git
+cd bite-dining
+pnpm install
+pnpm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Open [http://localhost:5173](http://localhost:5173).
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Scripts
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+| Command           | Description                    |
+|-------------------|--------------------------------|
+| `pnpm run dev`    | Dev server with HMR            |
+| `pnpm run build`  | Type-check + production build  |
+| `pnpm run preview`| Preview production build       |
+| `pnpm run lint`   | Run ESLint                     |
+| `pnpm run test`   | Vitest watch mode              |
+| `pnpm run test:run` | Vitest once (CI)             |
+| `pnpm run storybook` | Storybook on port 6006     |
+
+## Deploy (GitHub Pages)
+
+Deployment is **manual**. To publish:
+
+1. Open the repo on GitHub → **Actions**.
+2. Select **Deploy to GitHub Pages**.
+3. Click **Run workflow** → **Run workflow**.
+
+The workflow runs lint, tests, and build, then deploys the `dist/` output to GitHub Pages. Ensure **Settings → Pages → Build and deployment** uses **GitHub Actions** as the source.
+
+## Project structure
+
+- `src/components/` — React components (e.g. Header, Hero, Footer).
+- `src/hooks/` — Custom hooks.
+- Conventions and agent guidance: see **AGENTS.md**.
