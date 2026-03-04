@@ -21,13 +21,17 @@ export default function Header() {
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           scrolled
             ? 'bg-cream/95 backdrop-blur-lg shadow-sm border-b border-taupe/10'
-            : 'bg-transparent'
+            : 'bg-espresso/75 backdrop-blur-xs bg-transparent'
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-20">
             <div className="flex-shrink-0">
-              <h1 className="text-4xl font-bold italic font-display text-charcoal cursor-pointer tracking-tight">
+              <h1
+                className={`text-4xl font-bold italic font-display cursor-pointer tracking-tight transition-colors ${
+                  scrolled ? 'text-charcoal' : 'text-cream'
+                }`}
+              >
                 <span className="text-primary">B</span>ites
               </h1>
             </div>
@@ -37,7 +41,11 @@ export default function Header() {
                 <a
                   key={link}
                   href={`#${link.toLowerCase()}`}
-                  className="px-4 py-2 text-sm font-medium uppercase tracking-widest text-charcoal/70 hover:text-primary transition-colors rounded-lg hover:bg-primary/5"
+                  className={`px-4 py-2 text-sm font-medium uppercase tracking-widest transition-colors rounded-lg ${
+                    scrolled
+                      ? 'text-charcoal/70 hover:text-primary hover:bg-primary/5'
+                      : 'text-cream/90 hover:text-primary-light hover:bg-white/10'
+                  }`}
                 >
                   {link}
                 </a>
@@ -53,7 +61,7 @@ export default function Header() {
             <div className="md:hidden">
               <button
                 onClick={() => setIsOpen(true)}
-                className="text-charcoal p-2 hover:bg-primary/10 rounded-lg transition-colors"
+                className={`p-2 rounded-lg transition-colors ${scrolled ? 'text-charcoal hover:bg-primary/10' : 'text-cream hover:bg-white/10'}`}
                 aria-label="Open menu"
               >
                 <FiMenu size={24} />

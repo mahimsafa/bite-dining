@@ -154,7 +154,7 @@ export default function Hero() {
         style={{ x: bgX, y: bgY, scale: 1.08 }}
       >
         <img
-          src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1600&h=900&fit=crop"
+          src="https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?w=1600&h=900&fit=crop"
           alt="Restaurant atmosphere"
           className="w-full h-full object-cover"
         />
