@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import { FiShoppingCart, FiHeart } from 'react-icons/fi';
+import ParallaxSection from '../ParallaxSection/ParallaxSection';
+import ParallaxCard from '../ParallaxCard/ParallaxCard';
 
 interface MenuItem {
   id: number;
@@ -30,7 +32,7 @@ export default function MenuPack() {
     : menuItems.filter(item => item.category === activeCategory);
 
   return (
-    <section className="py-24 md:py-32 bg-cream-deep" id="menu">
+    <ParallaxSection className="py-24 md:py-32 bg-cream-deep" id="menu">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16 md:mb-20">
           <span className="inline-block border border-primary/40 text-primary px-5 py-2 rounded-full text-xs font-semibold mb-5 tracking-widest uppercase">
@@ -62,7 +64,7 @@ export default function MenuPack() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
           {filteredItems.map((item) => (
-            <div
+            <ParallaxCard
               key={item.id}
               className="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
             >
@@ -90,10 +92,10 @@ export default function MenuPack() {
                   </button>
                 </div>
               </div>
-            </div>
+            </ParallaxCard>
           ))}
         </div>
       </div>
-    </section>
+    </ParallaxSection>
   );
 }

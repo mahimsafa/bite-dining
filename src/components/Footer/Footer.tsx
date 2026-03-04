@@ -1,8 +1,21 @@
 import { FiFacebook, FiTwitter, FiInstagram, FiLinkedin, FiMapPin, FiPhone, FiMail } from 'react-icons/fi';
+import { useRef } from 'react';
+import { motion } from 'framer-motion';
+import useSectionParallax from '../../hooks/useSectionParallax';
+import { PARALLAX_CONFIG } from '../../hooks/parallaxConfig';
 
 export default function Footer() {
+  const ref = useRef<HTMLElement>(null);
+  const { style, onMouseMove, onMouseLeave } = useSectionParallax(ref);
   return (
-    <footer className="bg-espresso pt-16 pb-8">
+    <div style={{ perspective: PARALLAX_CONFIG.section.perspective }}>
+      <motion.footer
+        ref={ref}
+        style={style}
+        onMouseMove={onMouseMove}
+        onMouseLeave={onMouseLeave}
+        className="bg-espresso pt-16 pb-8"
+      >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           <div>
@@ -88,6 +101,7 @@ export default function Footer() {
           </div>
         </div>
       </div>
-    </footer>
+    </motion.footer>
+    </div>
   );
 }

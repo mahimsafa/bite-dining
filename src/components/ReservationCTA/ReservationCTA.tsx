@@ -1,8 +1,10 @@
 import { FiCalendar, FiArrowRight, FiPhone, FiAward, FiUsers, FiHeart } from 'react-icons/fi';
+import ParallaxSection from '../ParallaxSection/ParallaxSection';
+import ParallaxCard from '../ParallaxCard/ParallaxCard';
 
 export default function ReservationCTA() {
   return (
-    <section className="py-24 md:py-32 relative overflow-hidden">
+    <ParallaxSection className="py-24 md:py-32 relative overflow-hidden">
       <div className="absolute inset-0">
         <img
           src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1600&h=800&fit=crop"
@@ -44,16 +46,19 @@ export default function ReservationCTA() {
             { icon: FiUsers, value: '50+', label: 'Expert Chefs' },
             { icon: FiHeart, value: '10K+', label: 'Happy Customers' },
           ].map(({ icon: Icon, value, label }) => (
-            <div key={label} className="bg-white/8 backdrop-blur-sm border border-white/10 rounded-2xl p-6 hover:bg-white/12 transition-all">
+            <ParallaxCard
+              key={label}
+              className="bg-white/8 backdrop-blur-sm border border-white/10 rounded-2xl p-6 hover:bg-white/12 transition-all"
+            >
               <div className="w-12 h-12 bg-primary/20 rounded-xl flex items-center justify-center mx-auto mb-4">
                 <Icon className="w-6 h-6 text-primary" />
               </div>
               <p className="text-3xl font-bold font-display text-cream">{value}</p>
               <p className="text-taupe text-sm mt-2">{label}</p>
-            </div>
+            </ParallaxCard>
           ))}
         </div>
       </div>
-    </section>
+    </ParallaxSection>
   );
 }

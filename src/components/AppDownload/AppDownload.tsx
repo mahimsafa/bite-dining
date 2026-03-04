@@ -1,13 +1,15 @@
 import { FaApple, FaGooglePlay } from 'react-icons/fa';
 import { FiArrowRight } from 'react-icons/fi';
+import ParallaxSection from '../ParallaxSection/ParallaxSection';
+import ParallaxCard from '../ParallaxCard/ParallaxCard';
 
 export default function AppDownload() {
   return (
-    <section className="py-24 md:py-32 bg-cream">
+    <ParallaxSection className="py-24 md:py-32 bg-cream">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <div className="relative flex justify-center order-2 lg:order-1">
-            <div className="relative bg-espresso rounded-3xl p-6 shadow-2xl w-full max-w-sm">
+            <ParallaxCard className="relative bg-espresso rounded-3xl p-6 shadow-2xl w-full max-w-sm">
               <div className="relative mx-auto max-w-[220px]">
                 <div className="bg-espresso rounded-[2.5rem] p-3 pb-6 shadow-xl border-4 border-white/10">
                   <img
@@ -33,7 +35,7 @@ export default function AppDownload() {
                   </div>
                 ))}
               </div>
-            </div>
+            </ParallaxCard>
           </div>
 
           <div className="order-1 lg:order-2">
@@ -71,6 +73,6 @@ export default function AppDownload() {
           </div>
         </div>
       </div>
-    </section>
+    </ParallaxSection>
   );
 }

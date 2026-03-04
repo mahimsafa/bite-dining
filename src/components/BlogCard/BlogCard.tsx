@@ -1,4 +1,5 @@
 import { FiArrowRight, FiClock, FiUser } from 'react-icons/fi';
+import ParallaxCard from '../ParallaxCard/ParallaxCard';
 
 export interface BlogPost {
   id: number;
@@ -16,7 +17,7 @@ interface BlogCardProps {
 
 export default function BlogCard({ post }: BlogCardProps) {
   return (
-    <div className="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+    <ParallaxCard className="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
       <div className="relative aspect-video overflow-hidden">
         <img
           src={post.image}
@@ -49,6 +50,6 @@ export default function BlogCard({ post }: BlogCardProps) {
           <FiArrowRight className="w-4 h-4 group-hover/btn:translate-x-0.5 transition-transform" />
         </button>
       </div>
-    </div>
+    </ParallaxCard>
   );
 }

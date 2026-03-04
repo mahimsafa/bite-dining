@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { FiStar, FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 import { FaQuoteRight } from 'react-icons/fa';
+import ParallaxSection from '../ParallaxSection/ParallaxSection';
+import ParallaxCard from '../ParallaxCard/ParallaxCard';
 
 interface Review {
   id: number;
@@ -30,7 +32,7 @@ export default function Testimonials() {
   ];
 
   return (
-    <section className="py-24 md:py-32 bg-cream" id="reviews">
+    <ParallaxSection className="py-24 md:py-32 bg-cream" id="reviews">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16 md:mb-20">
           <span className="inline-block border border-primary/40 text-primary px-5 py-2 rounded-full text-xs font-semibold mb-5 tracking-widest uppercase">
@@ -46,7 +48,7 @@ export default function Testimonials() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
           {visibleReviews.map((review) => (
-            <div
+            <ParallaxCard
               key={review.id}
               className="bg-white rounded-2xl p-8 shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1 relative"
             >
@@ -72,7 +74,7 @@ export default function Testimonials() {
               </div>
 
               <p className="text-taupe leading-relaxed text-sm">"{review.text}"</p>
-            </div>
+            </ParallaxCard>
           ))}
         </div>
 
@@ -102,6 +104,6 @@ export default function Testimonials() {
           </button>
         </div>
       </div>
-    </section>
+    </ParallaxSection>
   );
 }

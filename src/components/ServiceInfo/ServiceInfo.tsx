@@ -1,4 +1,6 @@
 import { FiShoppingBag, FiClock, FiShield, FiTruck, FiHeart, FiAward } from 'react-icons/fi';
+import ParallaxSection from '../ParallaxSection/ParallaxSection';
+import ParallaxCard from '../ParallaxCard/ParallaxCard';
 
 const services = [
   { icon: FiShoppingBag, title: 'Online Order', description: 'Order easily through our website or app' },
@@ -11,7 +13,7 @@ const services = [
 
 export default function ServiceInfo() {
   return (
-    <section className="py-24 md:py-32 bg-espresso relative overflow-hidden" id="about">
+    <ParallaxSection className="py-24 md:py-32 bg-espresso relative overflow-hidden" id="about">
       {/* Subtle dot texture */}
       <div
         className="absolute inset-0 opacity-[0.04] pointer-events-none"
@@ -67,7 +69,7 @@ export default function ServiceInfo() {
           <div className="lg:col-span-7">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
               {services.map((service, index) => (
-                <div
+                <ParallaxCard
                   key={index}
                   className="group bg-white/5 border border-white/8 rounded-2xl p-6 hover:bg-white/10 hover:border-white/15 transition-all duration-300"
                 >
@@ -76,12 +78,12 @@ export default function ServiceInfo() {
                   </div>
                   <h3 className="text-base font-bold text-cream mb-2">{service.title}</h3>
                   <p className="text-taupe text-sm leading-relaxed">{service.description}</p>
-                </div>
+                </ParallaxCard>
               ))}
             </div>
           </div>
         </div>
       </div>
-    </section>
+    </ParallaxSection>
   );
 }

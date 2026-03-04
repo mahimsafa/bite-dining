@@ -1,4 +1,6 @@
 import { FiStar, FiShoppingCart, FiHeart } from 'react-icons/fi';
+import ParallaxSection from '../ParallaxSection/ParallaxSection';
+import ParallaxCard from '../ParallaxCard/ParallaxCard';
 
 interface Dish {
   id: number;
@@ -21,7 +23,7 @@ export default function PopularDishes() {
   const regularDishes = dishes.filter(d => !d.isFeatured);
 
   return (
-    <section className="py-24 md:py-32 bg-cream" id="menu">
+    <ParallaxSection className="py-24 md:py-32 bg-cream" id="menu">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16 md:mb-20">
           <span className="inline-block border border-primary/40 text-primary px-5 py-2 rounded-full text-xs font-semibold mb-5 tracking-widest uppercase">
@@ -37,7 +39,7 @@ export default function PopularDishes() {
 
         {featuredDish && (
           <div className="mb-10">
-            <div className="relative bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-500 group">
+            <ParallaxCard className="relative bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-500 group">
               <div className="grid md:grid-cols-2 items-stretch">
                 <div className="relative aspect-[4/3] md:aspect-auto overflow-hidden">
                   <img
@@ -78,13 +80,13 @@ export default function PopularDishes() {
               <button className="absolute top-5 right-5 w-11 h-11 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center shadow-md hover:bg-primary hover:text-white transition-all text-charcoal">
                 <FiHeart className="w-5 h-5" />
               </button>
-            </div>
+            </ParallaxCard>
           </div>
         )}
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           {regularDishes.map((dish) => (
-            <div
+            <ParallaxCard
               key={dish.id}
               className="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
             >
@@ -116,7 +118,7 @@ export default function PopularDishes() {
                   </button>
                 </div>
               </div>
-            </div>
+            </ParallaxCard>
           ))}
         </div>
 
@@ -126,6 +128,6 @@ export default function PopularDishes() {
           </button>
         </div>
       </div>
-    </section>
+    </ParallaxSection>
   );
 }

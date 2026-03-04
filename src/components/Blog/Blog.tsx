@@ -1,5 +1,6 @@
 import BlogCard from '../BlogCard/BlogCard';
 import type { BlogPost } from '../BlogCard/BlogCard';
+import ParallaxSection from '../ParallaxSection/ParallaxSection';
 
 const posts: BlogPost[] = [
   { id: 1, title: 'The Secret to Perfect Pasta', excerpt: 'Learn the techniques that make our pasta truly exceptional.', image: 'https://images.unsplash.com/photo-1551183053-bf91a1d81141?w=400&h=300&fit=crop', date: 'March 1, 2026', author: 'Chef Gordon', category: 'Recipes' },
@@ -9,7 +10,7 @@ const posts: BlogPost[] = [
 
 export default function Blog() {
   return (
-    <section className="py-24 md:py-32 bg-cream-deep" id="blog">
+    <ParallaxSection className="py-24 md:py-32 bg-cream-deep" id="blog">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16 md:mb-20">
           <span className="inline-block border border-primary/40 text-primary px-5 py-2 rounded-full text-xs font-semibold mb-5 tracking-widest uppercase">
@@ -28,6 +29,6 @@ export default function Blog() {
           ))}
         </div>
       </div>
-    </section>
+    </ParallaxSection>
   );
 }

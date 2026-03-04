@@ -1,4 +1,6 @@
 import { FiFacebook, FiTwitter, FiInstagram } from 'react-icons/fi';
+import ParallaxSection from '../ParallaxSection/ParallaxSection';
+import ParallaxCard from '../ParallaxCard/ParallaxCard';
 
 interface Chef {
   id: number;
@@ -16,7 +18,7 @@ const chefs: Chef[] = [
 
 export default function Chefs() {
   return (
-    <section className="py-24 md:py-32 bg-espresso relative overflow-hidden" id="contacts">
+    <ParallaxSection className="py-24 md:py-32 bg-espresso relative overflow-hidden" id="contacts">
       <div
         className="absolute inset-0 opacity-[0.04] pointer-events-none"
         style={{
@@ -40,7 +42,7 @@ export default function Chefs() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
           {chefs.map((chef) => (
-            <div
+            <ParallaxCard
               key={chef.id}
               className="group rounded-2xl overflow-hidden hover:-translate-y-1 transition-all duration-300"
             >
@@ -66,10 +68,10 @@ export default function Chefs() {
                   </div>
                 </div>
               </div>
-            </div>
+            </ParallaxCard>
           ))}
         </div>
       </div>
-    </section>
+    </ParallaxSection>
   );
 }
