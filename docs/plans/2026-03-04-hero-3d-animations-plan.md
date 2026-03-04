@@ -1,3 +1,58 @@
+# Hero 3D Animations — Implementation Plan
+
+> **For Claude:** REQUIRED SUB-SKILL: Use superpowers:executing-plans to implement this plan task-by-task.
+
+**Goal:** Add Framer Motion mouse parallax + 3 floating 3D-tilt dish cards to the Hero section.
+
+**Architecture:** Single file change (`Hero.tsx`) + install `framer-motion`. No new components. Mouse tracking via `useMotionValue`/`useSpring` on the section element. Cards use separate `motion.div` wrappers to compose entrance + bob animations without conflict. 3D tilt uses per-card `onMouseMove` with `rotateX`/`rotateY` motion values.
+
+**Tech Stack:** React 19, TypeScript strict, Tailwind CSS v4, Framer Motion v11
+
+---
+
+## Task 1: Install framer-motion
+
+**Files:**
+- Modify: `package.json` (via pnpm install)
+
+**Step 1: Install the dependency**
+
+Run from `/Users/mahim/work/rnd/facetory/facetory-frontend`:
+```bash
+pnpm add framer-motion
+```
+
+Expected: `framer-motion` added to `dependencies` in `package.json`
+
+**Step 2: Verify build still passes**
+
+```bash
+pnpm run build
+```
+Expected: clean build
+
+**Step 3: Commit**
+
+```bash
+git add package.json pnpm-lock.yaml
+git commit -m "feat: add framer-motion dependency"
+```
+
+---
+
+## Task 2: Rewrite Hero.tsx with parallax + floating 3D cards
+
+**Files:**
+- Modify: `src/components/Hero/Hero.tsx`
+
+**Step 1: Read the current Hero.tsx**
+
+File: `src/components/Hero/Hero.tsx`
+
+**Step 2: Replace the full file contents**
+
+```tsx
+'use client';
 import { useRef, useCallback } from 'react';
 import {
   motion,
@@ -122,6 +177,7 @@ export default function Hero() {
   const smoothX = useSpring(mouseX, { damping: 25, stiffness: 150 });
   const smoothY = useSpring(mouseY, { damping: 25, stiffness: 150 });
 
+  // Parallax transforms for each layer
   const bgX = useTransform(smoothX, [-0.5, 0.5], [12, -12]);
   const bgY = useTransform(smoothY, [-0.5, 0.5], [12, -12]);
   const textX = useTransform(smoothX, [-0.5, 0.5], [-6, 6]);
@@ -247,3 +303,52 @@ export default function Hero() {
     </section>
   );
 }
+```
+
+**Step 3: Run lint**
+
+```bash
+pnpm run lint
+```
+Expected: no errors
+
+**Step 4: Run build**
+
+```bash
+pnpm run build
+```
+Expected: clean TypeScript + Vite build
+
+**Step 5: Self-review checklist**
+
+- [ ] `'use client'` directive removed if it causes issues (it's harmless in Vite/React but not needed — remove if lint warns)
+- [ ] No `any` types
+- [ ] `useCallback` used for all event handlers to avoid re-renders
+- [ ] `useRef` typed correctly (`useRef<HTMLElement>`, `useRef<HTMLDivElement>`)
+- [ ] `noUnusedLocals` — all imports used
+- [ ] Cards hidden on mobile with `hidden lg:block`
+
+**Step 6: Commit**
+
+```bash
+git add src/components/Hero/Hero.tsx
+git commit -m "feat: add mouse parallax and floating 3D dish cards to Hero"
+```
+
+---
+
+## Final Verification
+
+Run: `pnpm run lint && pnpm run build`
+
+Expected: zero errors, clean build.
+
+Open browser at `http://localhost:5173` and verify:
+- [ ] Background image shifts subtly on mouse move (opposite direction)
+- [ ] Text column shifts slightly with mouse (same direction as cursor)
+- [ ] 3 dish cards visible on desktop right side
+- [ ] Cards entrance: fade up on load, staggered
+- [ ] Cards bob continuously at different speeds
+- [ ] Cards tilt in 3D toward cursor on hover, spring back on leave
+- [ ] Mobile: cards hidden, text full width
+- [ ] No layout shift or overflow
