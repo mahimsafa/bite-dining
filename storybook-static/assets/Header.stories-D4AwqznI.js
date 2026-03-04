@@ -1,0 +1,16 @@
+import{j as e}from"./jsx-runtime-u17CrQMm.js";import{r as o}from"./iframe-Nap-j9ma.js";import{j as m,k as p}from"./index-ByzEtbkY.js";import"./preload-helper-PPVm8Dsz.js";import"./iconBase-BhwS9pJY.js";const l=["About","Menu","Reviews","Blog","Contacts"];function c(){const[a,n]=o.useState(!1),[i,d]=o.useState(!1);return o.useEffect(()=>{const r=()=>{d(window.scrollY>50)};return window.addEventListener("scroll",r),()=>window.removeEventListener("scroll",r)},[]),e.jsxs("header",{className:`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${i?"bg-cream/95 backdrop-blur-md shadow-lg":"bg-transparent"}`,children:[e.jsx("div",{className:"max-w-7xl mx-auto px-4 sm:px-6 lg:px-8",children:e.jsxs("div",{className:"flex items-center justify-between h-20",children:[e.jsx("div",{className:"flex-shrink-0",children:e.jsxs("h1",{className:"text-3xl font-extrabold text-charcoal tracking-tight cursor-pointer",children:[e.jsx("span",{className:"text-primary",children:"B"}),"ites"]})}),e.jsx("nav",{className:"hidden md:flex items-center space-x-1",children:l.map(r=>e.jsx("a",{href:`#${r.toLowerCase()}`,className:"px-4 py-2 text-charcoal/80 hover:text-primary font-medium transition-colors rounded-lg hover:bg-primary/5",children:r},r))}),e.jsx("div",{className:"hidden md:block",children:e.jsx("button",{className:"bg-primary text-white px-7 py-3 rounded-full font-semibold hover:bg-primary/90 hover:shadow-lg hover:shadow-primary/30 transition-all transform hover:-translate-y-0.5",children:"Reserve Table"})}),e.jsx("div",{className:"md:hidden",children:e.jsx("button",{onClick:()=>n(!a),className:"text-charcoal p-2 hover:bg-primary/10 rounded-lg transition-colors",children:a?e.jsx(m,{size:24}):e.jsx(p,{size:24})})})]})}),e.jsx("div",{className:`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${a?"max-h-96 opacity-100":"max-h-0 opacity-0"}`,children:e.jsx("div",{className:"bg-cream/98 backdrop-blur-md shadow-lg",children:e.jsxs("div",{className:"px-4 py-4 space-y-1",children:[l.map(r=>e.jsx("a",{href:`#${r.toLowerCase()}`,className:"block text-charcoal font-medium py-3 px-4 rounded-lg hover:bg-primary/10 hover:text-primary transition-colors",onClick:()=>n(!1),children:r},r)),e.jsx("button",{className:"w-full bg-primary text-white px-6 py-3 rounded-full font-semibold mt-4 hover:bg-primary/90 transition-all",children:"Reserve Table"})]})})})]})}c.__docgenInfo={description:"",methods:[],displayName:"Header"};const g={title:"Components/Header",component:c,parameters:{layout:"fullscreen"},tags:["autodocs"]},s={args:{}},t={parameters:{backgrounds:{default:"cream"}},decorators:[a=>(Object.defineProperty(window,"scrollY",{value:100,writable:!0}),e.jsx(a,{}))]};s.parameters={...s.parameters,docs:{...s.parameters?.docs,source:{originalSource:`{
+  args: {}
+}`,...s.parameters?.docs?.source}}};t.parameters={...t.parameters,docs:{...t.parameters?.docs,source:{originalSource:`{
+  parameters: {
+    backgrounds: {
+      default: 'cream'
+    }
+  },
+  decorators: [Story => {
+    Object.defineProperty(window, 'scrollY', {
+      value: 100,
+      writable: true
+    });
+    return <Story />;
+  }]
+}`,...t.parameters?.docs?.source}}};const v=["Default","Scrolled"];export{s as Default,t as Scrolled,v as __namedExportsOrder,g as default};
