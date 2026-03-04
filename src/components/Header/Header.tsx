@@ -16,71 +16,97 @@ export default function Header() {
   }, []);
 
   return (
-    <header 
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? 'bg-cream/95 backdrop-blur-md shadow-lg' : 'bg-transparent'
-      }`}
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
-          <div className="flex-shrink-0">
-            <h1 className="text-3xl font-extrabold text-charcoal tracking-tight cursor-pointer">
-              <span className="text-primary">B</span>ites
-            </h1>
-          </div>
-
-          <nav className="hidden md:flex items-center space-x-1">
-            {navLinks.map((link) => (
-              <a
-                key={link}
-                href={`#${link.toLowerCase()}`}
-                className="px-4 py-2 text-charcoal/80 hover:text-primary font-medium transition-colors rounded-lg hover:bg-primary/5"
-              >
-                {link}
-              </a>
-            ))}
-          </nav>
-
-          <div className="hidden md:block">
-            <button className="bg-primary text-white px-7 py-3 rounded-full font-semibold hover:bg-primary/90 hover:shadow-lg hover:shadow-primary/30 transition-all transform hover:-translate-y-0.5">
-              Reserve Table
-            </button>
-          </div>
-
-          <div className="md:hidden">
-            <button
-              onClick={() => setIsOpen(!isOpen)}
-              className="text-charcoal p-2 hover:bg-primary/10 rounded-lg transition-colors"
-            >
-              {isOpen ? <FiX size={24} /> : <FiMenu size={24} />}
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <div 
-        className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${
-          isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+    <>
+      <header
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+          scrolled
+            ? 'bg-cream/95 backdrop-blur-lg shadow-sm border-b border-taupe/10'
+            : 'bg-transparent'
         }`}
       >
-        <div className="bg-cream/98 backdrop-blur-md shadow-lg">
-          <div className="px-4 py-4 space-y-1">
-            {navLinks.map((link) => (
-              <a
-                key={link}
-                href={`#${link.toLowerCase()}`}
-                className="block text-charcoal font-medium py-3 px-4 rounded-lg hover:bg-primary/10 hover:text-primary transition-colors"
-                onClick={() => setIsOpen(false)}
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-20">
+            <div className="flex-shrink-0">
+              <h1 className="text-4xl font-bold italic font-display text-charcoal cursor-pointer tracking-tight">
+                <span className="text-primary">B</span>ites
+              </h1>
+            </div>
+
+            <nav className="hidden md:flex items-center gap-1">
+              {navLinks.map((link) => (
+                <a
+                  key={link}
+                  href={`#${link.toLowerCase()}`}
+                  className="px-4 py-2 text-sm font-medium uppercase tracking-widest text-charcoal/70 hover:text-primary transition-colors rounded-lg hover:bg-primary/5"
+                >
+                  {link}
+                </a>
+              ))}
+            </nav>
+
+            <div className="hidden md:block">
+              <button className="bg-primary text-white px-7 py-3 rounded-full font-semibold text-sm tracking-wide ring-1 ring-primary/30 hover:bg-primary-light hover:shadow-lg hover:shadow-primary/25 transition-all hover:-translate-y-0.5">
+                Reserve Table
+              </button>
+            </div>
+
+            <div className="md:hidden">
+              <button
+                onClick={() => setIsOpen(true)}
+                className="text-charcoal p-2 hover:bg-primary/10 rounded-lg transition-colors"
+                aria-label="Open menu"
               >
-                {link}
-              </a>
-            ))}
-            <button className="w-full bg-primary text-white px-6 py-3 rounded-full font-semibold mt-4 hover:bg-primary/90 transition-all">
+                <FiMenu size={24} />
+              </button>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      {/* Mobile drawer backdrop */}
+      <div
+        className={`fixed inset-0 z-40 bg-espresso/50 backdrop-blur-sm md:hidden transition-opacity duration-300 ${
+          isOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+        }`}
+        onClick={() => setIsOpen(false)}
+      />
+
+      {/* Mobile drawer */}
+      <div
+        className={`fixed top-0 right-0 bottom-0 z-50 w-72 bg-cream shadow-2xl md:hidden transition-transform duration-300 ease-in-out ${
+          isOpen ? 'translate-x-0' : 'translate-x-full'
+        }`}
+      >
+        <div className="flex items-center justify-between p-6 border-b border-taupe/15">
+          <h2 className="text-2xl font-bold italic font-display text-charcoal">
+            <span className="text-primary">B</span>ites
+          </h2>
+          <button
+            onClick={() => setIsOpen(false)}
+            className="p-2 hover:bg-primary/10 rounded-lg transition-colors text-charcoal"
+            aria-label="Close menu"
+          >
+            <FiX size={22} />
+          </button>
+        </div>
+        <nav className="p-6 space-y-1">
+          {navLinks.map((link) => (
+            <a
+              key={link}
+              href={`#${link.toLowerCase()}`}
+              className="block py-3 px-4 text-sm font-medium uppercase tracking-widest text-charcoal/70 hover:text-primary hover:bg-primary/5 rounded-xl transition-colors"
+              onClick={() => setIsOpen(false)}
+            >
+              {link}
+            </a>
+          ))}
+          <div className="pt-6">
+            <button className="w-full bg-primary text-white px-6 py-3.5 rounded-full font-semibold text-sm tracking-wide hover:bg-primary-light transition-all">
               Reserve Table
             </button>
           </div>
-        </div>
+        </nav>
       </div>
-    </header>
+    </>
   );
 }
